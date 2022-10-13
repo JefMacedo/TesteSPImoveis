@@ -15,7 +15,7 @@ declare @i int
 		   ,[Complemento]
 		   )
 		 VALUES
-		   (@i + 1
+		   (@i
            ,CONCAT('Cidade ', @i)
 		   ,CONCAT('Bairro ', @i)
            ,CONCAT('Rua ', @i)
