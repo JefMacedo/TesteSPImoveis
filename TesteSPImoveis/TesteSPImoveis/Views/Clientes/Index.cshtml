@@ -1,0 +1,85 @@
+﻿@model IEnumerable<TesteSPImoveis.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<div class="p-5">
+    <div class="border border-light border-3 rounded">
+        <div class="container">
+            <div class="row">
+                <div class="col-10">
+                    <h5>Clientes cadastrados</h5>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-sm btn-outline-success novoCliente">Novo Cliente</button>
+                </div>
+
+                <hr />
+
+                <div class="p-5 rounded shadow-sm" id="divTabelaCliente">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalConfirma" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+            </div>
+            <div id="modalFooter" class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+<div id="modalCliente" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title"></h6>
+            </div>
+
+            <div class="modal-body">
+                <input type="hidden" class="form-control form-control-sm clienteId" />
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" class="form-control form-control-sm nome" />
+                    <span class="text-danger erroNome d-none"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control form-control-sm email" />
+                    <span class="text-danger erroEmail d-none"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Telefone</label>
+                    @*<input type="text" class="form-control form-control-sm telefone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />*@
+                    <input type="text" class="form-control form-control-sm telefone" />
+                    <span class="text-danger erroTelefone d-none"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Data</label>
+                    <input type="date" id="dataCadastro" class="form-control form-control-sm dataCadastro" />
+                    <span class="text-danger erroData d-none"></span>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="form-group">
+                    <input type="button" value="Salvar" class="btn btn-sm btn-outline-success btnSalvar" />
+                    <input type="button" value="Cancelar" class="btn btn-sm btn-light" data-bs-dismiss="modal" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/js/Cliente.js"></script>
+}

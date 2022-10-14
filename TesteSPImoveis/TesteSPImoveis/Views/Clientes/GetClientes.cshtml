@@ -1,0 +1,65 @@
+﻿@model IEnumerable<TesteSPImoveis.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<h1>Clientes</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar novo cliente</a>
+</p>
+<table id="myTable" class="table MontarTabelaPaginada">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-outline-success m-1" asp-route-id="@item.ClienteId">Edit</a> |
+                <a asp-action="Details" class="btn btn-outline-primary m-1" asp-route-id="@item.ClienteId">Details</a> |
+                <a asp-action="Delete" class="btn btn-outline-danger m-1" asp-route-id="@item.ClienteId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+        $(document).(function () {
+            $('.MontarTabelaPaginada').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.12.1/i18n/pt-BR.json"
+                }
+            });
+        });
+    </script>
+}
