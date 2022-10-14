@@ -1,0 +1,65 @@
+﻿@model IEnumerable<TesteSPImoveis.Models.Imovel>
+
+@{
+    ViewData["Title"] = "Imoveis";
+}
+
+<h1>Imoveis</h1>
+
+<p>
+    <a asp-action="Create">Cadastar novo imóvel</a>
+</p>
+<table class="table MontarTabelaPaginada">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ClienteId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bairro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rua)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Numero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Complemento)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClienteId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bairro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Complemento)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-outline-success m-1" asp-route-id="@item.ImovelId">Edit</a> |
+                <a asp-action="Details" class="btn btn-outline-primary m-1" asp-route-id="@item.ImovelId">Details</a> |
+                <a asp-action="Delete" class="btn btn-outline-danger m-1" asp-route-id="@item.ImovelId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
